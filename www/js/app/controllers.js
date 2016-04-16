@@ -35,10 +35,28 @@ angular.module('app.controllers', [])
         '$state', '$scope', 'UserService',   // <-- controller dependencies
         function ($state, $scope, UserService) {
 
-            debugger;
             UserService.currentUser().then(function (_user) {
                 $scope.user = _user;
+
+                $scope.userParam = {
+                    username: _user.get("username"),
+                    first_name: _user.get("first_name"),
+                    last_name: _user.get("last_name")
+                };
             });
 
+        $scope.doUpdateAction = function(){
+          $scope.user.set("first_name", $scope.userParam.first_name);
+
+          // Save
+          $scope.user.save(null, {
+            success: function(point) {
+              alert("Saved successfully");
+            },
+            error: function(point, error) {
+              alert("Error save");
+            }
+          });
+        };
 
         }]);
