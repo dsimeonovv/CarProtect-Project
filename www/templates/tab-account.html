@@ -8,18 +8,41 @@
         </ion-item>-->
         <div class="list">
           <label class="item item-input">
-            <input type="text" placeholder="Username" ng-model="userParam.username">
+            <span class="input-label">User Name</span>
+            {{user.get("username")}}
           </label>
 
           <label class="item item-input">
+            <span class="input-label">First Name</span>
             <input type="text" placeholder="First Name" ng-model="userParam.first_name">
           </label>
 
           <label class="item item-input">
+            <span class="input-label">Last Name</span>
             <input type="text" placeholder="Last Name" ng-model="userParam.last_name">
           </label>
 
-          <button class="button-assertive" ng-click="doUpdateAction()">
+          <label class="item item-input">
+            <span class="input-label">Email</span>
+            <input type="text" placeholder="Email" ng-model="userParam.email">
+          </label>
+
+          <label class="item item-input item-select">
+              <div class="input-label" >
+                Gender
+              </div>
+              <select ng-model="userParam.gender">
+                <option>Female</option>
+                <option selected>Male</option>
+              </select>
+            </label>
+
+          <label class="item item-input">
+            <span class="input-label">Age</span>
+            <input type="text" placeholder="Age" ng-model="userParam.age">
+          </label>
+
+          <button class="button button-positive" style="width:100%" ng-click="doUpdateAction()">
               Update
           </button>
         </div>

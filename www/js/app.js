@@ -82,6 +82,16 @@ angular.module('starter',
                 }
             })
 
+            .state('tab.new', {
+                url: '/new',
+                views: {
+                    'tab-new': {
+                        templateUrl: 'templates/tab-new.html',
+                        controller: 'ListCtrl'
+                    }
+                }
+            })
+
             .state('tab.account', {
                 url: '/account',
                 cache: false,

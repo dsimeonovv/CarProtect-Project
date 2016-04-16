@@ -44,6 +44,8 @@ angular.module('user.services', [])
                     user.set("email", _userParams.email);
                     user.set("first_name", _userParams.first_name);
                     user.set("last_name", _userParams.last_name);
+                    user.set("gender", _userParams.gender);
+                    user.set("age", _userParams.age);
 
                     // should return a promise
                     return user.signUp(null, {});

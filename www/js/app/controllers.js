@@ -12,11 +12,10 @@ angular.module('app.controllers', [])
 
         }])
     .controller('ListCtrl', [
-        '$state', '$scope', 'UserService',   // <-- controller dependencies
-        function ($state, $scope, UserService) {
+        '$state', '$scope', 'UserService', 'AppService',   // <-- controller dependencies
+        function ($state, $scope, UserService, AppService) {
 
-            $scope.dataList = ["One", "Two", "Three"];
-
+            $scope.dataList = ["Kola 1", "Kola 2", "Kola 3"];
 
             $scope.doLogoutAction = function () {
                 UserService.logout().then(function () {
@@ -28,9 +27,9 @@ angular.module('app.controllers', [])
                     alert("error logging in " + _error.debug);
                 })
             };
-
-
+            
         }])
+
     .controller('AccountCtrl', [
         '$state', '$scope', 'UserService',   // <-- controller dependencies
         function ($state, $scope, UserService) {
@@ -41,13 +40,19 @@ angular.module('app.controllers', [])
                 $scope.userParam = {
                     username: _user.get("username"),
                     first_name: _user.get("first_name"),
-                    last_name: _user.get("last_name")
+                    last_name: _user.get("last_name"),
+                    gender: _user.get("gender"),
+                    email: _user.get("email"),
+                    age: _user.get("age")
                 };
             });
 
         $scope.doUpdateAction = function(){
           $scope.user.set("first_name", $scope.userParam.first_name);
           $scope.user.set("last_name", $scope.userParam.last_name);
+          $scope.user.set("email", $scope.userParam.email);
+          $scope.user.set("gender", $scope.userParam.gender);
+          $scope.user.set("age", $scope.userParam.age);
           // Save
           $scope.user.save(null, {
             success: function(point) {
