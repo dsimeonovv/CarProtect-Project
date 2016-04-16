@@ -47,7 +47,7 @@ angular.module('app.controllers', [])
 
         $scope.doUpdateAction = function(){
           $scope.user.set("first_name", $scope.userParam.first_name);
-
+          $scope.user.set("last_name", $scope.userParam.last_name);
           // Save
           $scope.user.save(null, {
             success: function(point) {
