@@ -39,6 +39,7 @@ angular.module('user.services', [])
                 createUser: function (_userParams) {
 
                     var user = new Parse.User();
+                    user.set("objectId", _userParams.objectId);
                     user.set("username", _userParams.email);
                     user.set("password", _userParams.password);
                     user.set("email", _userParams.email);
@@ -51,6 +52,23 @@ angular.module('user.services', [])
                     return user.signUp(null, {});
 
                 },
+                /**
+                 *
+                 * @param _carParams
+                 */
+                /*createCar: function (_carParams) {
+
+                    var car = new Parse.Car();
+
+                    car.set("objectId", _carParams.objectId);
+                    car.set("brand", _carParams.brand);
+                    car.set("model", _carParams.model);
+                    car.set("year", _carParams.year);
+                    car.set("engine_litres", _carParams.engine_litres);
+                    car.set("horse_power", _carParams.horse_power);
+                    car.set("car_protect_company", _carParams.car_protect_company);
+
+                },*/
                 /**
                  *
                  * @param _parseInitUser

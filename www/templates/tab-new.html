@@ -1,4 +1,14 @@
 <ion-view title="Add New Car">
+    <ion-nav-buttons side="left">
+        <button class="button" ng-click="doSomeAction()">
+            Do Something
+          </button>
+        </ion-nav-buttons>
+        <ion-nav-buttons side="right">
+          <button class="button" ng-click="doLogoutAction()">
+            Logout
+          </button>
+        </ion-nav-buttons>
     <ion-content class="padding">
         <!--<ion-item>
             <pre>{{user | json}}</pre>
@@ -10,35 +20,35 @@
 
           <label class="item item-input">
             <span class="input-label">Brand</span>
-            <input type="text" ng-model="">
+            <input type="text" ng-model="car.brand">
           </label>
 
           <label class="item item-input">
             <span class="input-label">Model</span>
-            <input type="text" ng-model="">
+            <input type="text" ng-model="car.model">
           </label>
 
           <label class="item item-input">
             <span class="input-label">Year</span>
-            <input type="text" ng-model="">
+            <input type="text" ng-model="car.year">
           </label>
 
           <label class="item item-input">
             <span class="input-label">Engine Litres</span>
-            <input type="text" ng-model="">
+            <input type="text" ng-model="car.engine_litres">
           </label>
 
           <label class="item item-input">
             <span class="input-label">Horse Power</span>
-            <input type="text" ng-model="">
+            <input type="text" ng-model="car.horse_power">
           </label>
 
           <label class="item item-input">
             <span class="input-label">Car Protect Company</span>
-            <input type="text" ng-model="">
+            <input type="text" ng-model="car.car_protect_company">
           </label>
 
-          <button class="button button-positive" style="width:100%" ng-click="doInsertAction()">
+          <button class="button button-positive" style="width:100%" ng-click="createCar()">
               Add Car
           </button>
         </div>

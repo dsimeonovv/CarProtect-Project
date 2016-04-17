@@ -8,6 +8,8 @@ angular.module('starter',
         'ionic',
         'app.controllers',
         'app.services',
+        'car.controllers',
+        'car.services',
         'user.controllers',
         'user.services'
     ]
@@ -87,7 +89,7 @@ angular.module('starter',
                 views: {
                     'tab-new': {
                         templateUrl: 'templates/tab-new.html',
-                        controller: 'ListCtrl'
+                        controller: 'CarCreateCtrl'
                     }
                 }
             })

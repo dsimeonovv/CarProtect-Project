@@ -5,6 +5,7 @@ angular.module('app.services', [])
 
 
           return {
+
           /**
            *
            * @param _carParams
@@ -12,6 +13,8 @@ angular.module('app.services', [])
           createCar: function (_carParams) {
 
               var car = new Parse.Car();
+
+              car.set("objectId", _carParams.objectId);
               car.set("brand", _carParams.brand);
               car.set("model", _carParams.model);
               car.set("year", _carParams.year);
