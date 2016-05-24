@@ -1,4 +1,13 @@
 angular.module('car.controllers', [])
+.controller('CarListCtrl', [
+    '$state', '$scope', '$stateParams', 'UserService', 'CarService', // <-- controller dependencies
+    function($state, $scope, $stateParams, UserService, CarService) {
+      CarService.findAllCars().then(function(cars) {
+        console.log(cars.length);
+        $scope.carList = cars;
+      })
+    }
+  ])
 
 .controller('CarCreateCtrl', [
   '$state', '$scope', '$stateParams', 'UserService', 'CarService', 'AppService', // <- controller dependencies

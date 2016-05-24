@@ -61,7 +61,7 @@ angular.module('app.controllers', [])
             });
 
 
-        $scope.doInsertAction = function () {
+        /*$scope.doInsertAction = function () {
           alert("Vliza vuv funkciqta");
           var query =  new Parse.Query("Car");
           query.equalTo("objectId", $scope.userParam.objectId);
@@ -83,7 +83,7 @@ angular.module('app.controllers', [])
                 console.log("None found.");
               }
             });
-        };
+        };*/
 
         $scope.doUpdateAction = function(){
           $scope.user.set("first_name", $scope.userParam.first_name);

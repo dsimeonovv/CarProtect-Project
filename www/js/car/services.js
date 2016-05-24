@@ -4,6 +4,40 @@ angular.module('car.services', [])
 .service('CarService', ['$q', 'ParseConfiguration',
   function($q, ParseConfiguration) {
     return {
+
+      findMyCars: function(_user) {
+        var defered = $q.defer();
+        var Car = Parse.Object.extend('Car');
+        var car = new Parse.Query(Car);
+        car.equalTo("user_id", _user);
+        car.find({
+          success: function(cars) {
+            console.log("vliza");
+            defered.resolve(cars);
+          },
+          error: function(err) {
+            console.log("ne vliza");
+            defered.reject(cars);
+          }
+        });
+        return defered.promise;
+      },
+
+      findAllCars: function() {
+      var defered = $q.defer();
+      var Car = Parse.Object.extend('Car');
+      var car = new Parse.Query(Car);
+      car.find({
+        success: function(cars) {
+          defered.resolve(cars);
+        },
+        error: function(err) {
+          defered.reject(cars);
+        }
+      });
+      return defered.promise;
+    },
+
       createCar: function(_user, carParams) {
         console.log(JSON.stringify(carParams));
         var deffered = $q.defer();

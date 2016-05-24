@@ -23,8 +23,8 @@ angular.module('starter',
  * parse constants
  */
  .value('ParseConfiguration', {
- applicationId: "3c86fbbdb3a16c1cddd6a01ec94d45cf",
- server: "https://carprotect-493.nodechef.com/parse"
+ applicationId: "cfbdd8e0df1bdddff952a3004e654627",
+ server: "https://carprotect-778.nodechef.com/parse"
   })
 /**
  *
@@ -65,7 +65,7 @@ angular.module('starter',
             })
 
             // Each tab has its own nav history stack:
-            .state('tab.list', {
+            /*.state('tab.list', {
                 url: '/list',
                 views: {
                     'tab-list': {
@@ -73,7 +73,18 @@ angular.module('starter',
                         controller: 'ListCtrl'
                     }
                 }
+            })*/
+
+            .state('tab.list', {
+              url: '/list',
+              views: {
+                'tab-list': {
+                  templateUrl: 'templates/tab-list.html',
+                  controller: 'CarListCtrl'
+                }
+              }
             })
+
             .state('tab.list-detail', {
                 url: '/list/:itemId',
                 views: {
