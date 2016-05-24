@@ -86,13 +86,13 @@ angular.module('starter',
             })
 
             .state('tab.list-detail', {
-                url: '/list/:itemId',
-                views: {
-                    'tab-list': {
-                        templateUrl: 'templates/list-detail.html',
-                        controller: 'ListDetailCtrl'
-                    }
+              url: '/list/:itemId',
+              views: {
+                'tab-list': {
+                  templateUrl: 'templates/list-detail.html',
+                  controller: 'CarDetailsCtrl'
                 }
+              }
             })
 
             .state('tab.new', {

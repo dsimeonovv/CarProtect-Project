@@ -5,19 +5,19 @@ angular.module('car.services', [])
   function($q, ParseConfiguration) {
     return {
 
-      findMyCars: function(_user) {
+      findMyCars: function() {
         var defered = $q.defer();
         var Car = Parse.Object.extend('Car');
         var car = new Parse.Query(Car);
-        car.equalTo("user_id", _user);
+        car.equalTo("model", "307");
         car.find({
           success: function(cars) {
-            console.log("vliza");
             defered.resolve(cars);
+            console.log("success");
           },
           error: function(err) {
-            console.log("ne vliza");
-            defered.reject(cars);
+            defered.reject();
+            console.log("no success");
           }
         });
         return defered.promise;
@@ -50,6 +50,7 @@ angular.module('car.services', [])
         myCar.set('engine_litres', carParams.engine_litres);
         myCar.set('horse_power', parseInt(carParams.horse_power));
         myCar.set('car_protect_company', carParams.car_protect_company);
+        myCar.set('objectId', carParams.objectId);
         myCar.set('user_id', _user.id);
 
         var newACL = new Parse.ACL();

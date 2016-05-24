@@ -9,6 +9,21 @@ angular.module('car.controllers', [])
     }
   ])
 
+.controller('CarDetailsCtrl', [
+    '$state', '$scope', '$stateParams', 'UserService', 'CarService',
+    function($state, $scope, $stateParams, UserService, CarService){
+
+      var Car = Parse.Object.extend('Car');
+      var car = new Parse.Query(Car);
+
+      var carModel = car.get("model");
+      CarService.findMyCars().then(function(cars){
+        console.log(cars.length);
+        $scope.carList = cars;
+      })
+    }
+])
+
 .controller('CarCreateCtrl', [
   '$state', '$scope', '$stateParams', 'UserService', 'CarService', 'AppService', // <- controller dependencies
   function($state, $scope, $stateParams, UserService, CarService, AppService){
