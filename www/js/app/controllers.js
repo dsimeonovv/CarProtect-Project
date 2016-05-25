@@ -102,4 +102,71 @@ angular.module('app.controllers', [])
             }
           });
         };
-}]);
+}])
+
+.controller('DetailsCtrl', [
+    '$state', '$scope', 'UserService', 'AppService', 'Camera', 'Upload', // <-- controller dependencies
+    function($state, $scope, UserService, AppService, Camera, $upload) {
+      $scope.saveProfileDetails = function() {
+        AppService.saveProfile($scope.profile, $scope.profileParams)
+          .then(function(profile) {
+            console.log("Successfully created profile: " + JSON.stringify(profile))
+            alert("Saved!");
+          });
+      };
+      $scope.getProfileDetails = function() {
+        AppService.getProfile($scope.user)
+          .then(function(profile) {
+            $scope.profile = profile;
+            $scope.profileParams = {
+              age: profile.get('age'),
+              gender: profile.get('gender'),
+              avatar: profile.get('avatar')
+            }
+          });
+      };
+      UserService.currentUser()
+        .then(function(_user) {
+          $scope.user = _user;
+        })
+        .then($scope.getProfileDetails);
+
+      $scope.getPicture = function(sourceType) {
+        //sourceType - 1 - camera, 0 - album
+        var options = {
+          quality: 75,
+          targetWidth: 200,
+          targetHeight: 200,
+          sourceType: sourceType,
+          destinationType: navigator.camera.DestinationType.DATA_URL
+        };
+        Camera.getPicture(options).then(function(imageData) {
+          $scope.profileParams.avatar = "data:image/jpeg;base64," + imageData;
+          $scope.upload("data:image/jpeg;base64," + imageData);
+        }, function(err) {
+          console.log(err);
+        });
+      };
+
+      $scope.upload = function(file) {
+        $scope.title = "avatar";
+        if (file && !file.$error) {
+          file.upload = $upload.upload({
+            url: "https://api.cloudinary.com/v1_1/kulinski/upload",
+            data: {
+              upload_preset: "k6xfmhlu",
+              tags: 'avatars',
+              context: 'photo=' + $scope.title,
+              file: file
+            }
+          }).success(function(data, status, headers, config) {
+            $scope.profileParams.avatar = data['secure_url'];
+            console.log(JSON.stringify(data));
+          }).error(function(data, status, headers, config) {
+            console.log(JSON.stringify(data));
+            alert('Upload failed!');
+          });
+        };
+      }
+    }
+  ])

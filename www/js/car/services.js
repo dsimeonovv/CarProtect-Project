@@ -5,14 +5,14 @@ angular.module('car.services', [])
   function($q, ParseConfiguration) {
     return {
 
-      findMyCars: function() {
+      findMyCars: function(_id) {
         var defered = $q.defer();
         var Car = Parse.Object.extend('Car');
         var car = new Parse.Query(Car);
-        car.equalTo("model", "307");
-        car.find({
-          success: function(cars) {
-            defered.resolve(cars);
+        //car.equalTo("objectId", _id);
+        car.get(_id, {
+          success: function(car) {
+            defered.resolve(car);
             console.log("success");
           },
           error: function(err) {

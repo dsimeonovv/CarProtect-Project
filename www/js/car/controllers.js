@@ -12,14 +12,8 @@ angular.module('car.controllers', [])
 .controller('CarDetailsCtrl', [
     '$state', '$scope', '$stateParams', 'UserService', 'CarService',
     function($state, $scope, $stateParams, UserService, CarService){
-
-      var Car = Parse.Object.extend('Car');
-      var car = new Parse.Query(Car);
-
-      var carModel = car.get("model");
-      CarService.findMyCars().then(function(cars){
-        console.log(cars.length);
-        $scope.carList = cars;
+      CarService.findMyCars($stateParams.itemId).then(function(car){
+        $scope.carDetails = car;
       })
     }
 ])

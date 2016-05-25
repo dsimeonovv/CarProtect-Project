@@ -16,6 +16,14 @@
         <ion-item>
             <pre>{{user.get("username")}}</pre>
         </ion-item>-->
+        <a ng-click="getPicture(1)" class="item item-icon-left">Таке Picture</a>
+        <a class="item item-avatar" href="#">
+          <img ng-src="{{userParam.avatar}}">
+          <h2>{{user.get('first_name') }} {{user.get('last_name') }}</h2>
+          <p>{{user.get('username')}}</p>
+        </a>
+        <!--<a ng-click="getPicture(0)" class="item item-icon-left">Open Gallery</a>-->
+        
         <div class="list">
           <label class="item item-input">
             <span class="input-label">User Name</span>

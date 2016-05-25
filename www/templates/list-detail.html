@@ -18,13 +18,13 @@
 
     <ion-content>
     <ion-list can-swipe="true">
-        <ion-item class="item" ng-repeat="data in carList" type="item-text-wrap">
-            <pre>Brand: {{data.get('brand')}}</pre>
-            <pre>Model: {{data.get('model')}}</pre>
-            <pre>Engine Litres: {{data.get('engine_litres')}}</pre>
-            <pre>Horse Power: {{data.get('horse_power')}}</pre>
-            <pre>Year: {{data.get('year')}}</pre>
-            <pre>Car Protect Company: {{data.get('car_protect_company')}}</pre>
+        <ion-item class="item" type="item-text-wrap">
+            <pre>Brand: {{carDetails.get('brand')}}</pre>
+            <pre>Model: {{carDetails.get('model')}}</pre>
+            <pre>Engine Litres: {{carDetails.get('engine_litres')}}</pre>
+            <pre>Horse Power: {{carDetails.get('horse_power')}}</pre>
+            <pre>Year: {{carDetails.get('year')}}</pre>
+            <pre>Car Protect Company: {{carDetails.get('car_protect_company')}}</pre>
         </ion-item>
     </ion-list>
   </ion-content>

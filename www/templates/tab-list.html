@@ -21,7 +21,7 @@
         </ion-list>-->
         <ion-list can-swipe="true">
             <ion-item class="item" ng-repeat="data in carList" type="item-text-wrap"
-                      href="#/tab/list/{{$index}}">
+                      href="#/tab/list/{{data.id}}">
                 <pre>Brand: {{data.get('brand')}}</pre>
                 <pre>Model: {{data.get('model')}}</pre>
                 <pre>Tab to view details</pre>

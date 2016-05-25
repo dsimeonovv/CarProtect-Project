@@ -105,6 +105,16 @@ angular.module('starter',
                 }
             })
 
+            .state('travel.account-details', {
+              url: '/account/details',
+              views: {
+                'tab-account': {
+                  templateUrl: 'templates/tab-account.html',
+                  controller: 'DetailsCtrl'
+                }
+              }
+            })
+
             .state('tab.account', {
                 url: '/account',
                 cache: false,
@@ -125,8 +135,6 @@ angular.module('starter',
 
         $rootScope.$on('$stateChangeError',
             function (event, toState, toParams, fromState, fromParams, error) {
-
-                debugger;
 
                 console.log('$stateChangeError ' + error && (error.debug || error.message || error));
 
