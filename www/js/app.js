@@ -105,7 +105,7 @@ angular.module('starter',
                 }
             })
 
-            .state('travel.account-details', {
+            .state('tab.tab-account', {
               url: '/account/details',
               views: {
                 'tab-account': {

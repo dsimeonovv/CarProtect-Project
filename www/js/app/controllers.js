@@ -102,11 +102,31 @@ angular.module('app.controllers', [])
             }
           });
         };
+
+        $scope.getPicture = function(sourceType) {
+          console.log("vliza 1");
+          //sourceType - 1 - camera, 0 - album
+          var options = {
+            quality: 75,
+            targetWidth: 200,
+            targetHeight: 200,
+            sourceType: sourceType,
+            destinationType: navigator.camera.DestinationType.DATA_URL
+          };
+          Camera.getPicture(options).then(function(imageData) {
+            console.log("vliza");
+            $scope.profileParams.avatar = "data:image/jpeg;base64," + imageData;
+            $scope.upload("data:image/jpeg;base64," + imageData);
+          }, function(err) {
+            console.log(err);
+          });
+        };
 }])
 
 .controller('DetailsCtrl', [
     '$state', '$scope', 'UserService', 'AppService', 'Camera', 'Upload', // <-- controller dependencies
     function($state, $scope, UserService, AppService, Camera, $upload) {
+      console.log("test");
       $scope.saveProfileDetails = function() {
         AppService.saveProfile($scope.profile, $scope.profileParams)
           .then(function(profile) {
@@ -131,7 +151,8 @@ angular.module('app.controllers', [])
         })
         .then($scope.getProfileDetails);
 
-      $scope.getPicture = function(sourceType) {
+      /*$scope.getPicture = function(sourceType) {
+        console.log("vliza 1");
         //sourceType - 1 - camera, 0 - album
         var options = {
           quality: 75,
@@ -141,12 +162,13 @@ angular.module('app.controllers', [])
           destinationType: navigator.camera.DestinationType.DATA_URL
         };
         Camera.getPicture(options).then(function(imageData) {
+          console.log("vliza");
           $scope.profileParams.avatar = "data:image/jpeg;base64," + imageData;
           $scope.upload("data:image/jpeg;base64," + imageData);
         }, function(err) {
           console.log(err);
         });
-      };
+      };*/
 
       $scope.upload = function(file) {
         $scope.title = "avatar";
