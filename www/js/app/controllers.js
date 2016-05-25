@@ -31,8 +31,8 @@ angular.module('app.controllers', [])
         }])
 
     .controller('AccountCtrl', [
-        '$state', '$scope', 'UserService', 'AppService',    // <-- controller dependencies
-        function ($state, $scope, UserService, AppService) {
+        '$state', '$scope', 'UserService', 'AppService', 'Camera', 'Upload',    // <-- controller dependencies
+        function ($state, $scope, UserService, AppService, Camera, $upload) {
 
             UserService.currentUser().then(function (_user, _car) {
                 $scope.user = _user;
