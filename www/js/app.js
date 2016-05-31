@@ -11,7 +11,9 @@ angular.module('starter',
         'car.controllers',
         'car.services',
         'user.controllers',
-        'user.services'
+        'user.services',
+        'carPrDetails.controllers',
+        'carPrDetails.services'
     ]
 )
 /**
@@ -111,6 +113,16 @@ angular.module('starter',
                 'tab-account': {
                   templateUrl: 'templates/tab-account.html',
                   controller: 'DetailsCtrl'
+                }
+              }
+            })
+
+            .state('tab.car-protect', {
+              url: '/car-protect',
+              views: {
+                'tab-car-protect': {
+                  templateUrl: 'templates/tab-car-protect.html',
+                  controller: 'CarProtectDetailsCtrl'
                 }
               }
             })
