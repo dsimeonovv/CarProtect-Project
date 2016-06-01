@@ -117,6 +117,16 @@ angular.module('starter',
               }
             })
 
+            .state('tab.car-prot-details', {
+              url: '/car-protect-dtls/:itemId',
+              views: {
+                'tab-car-prot-details': {
+                  templateUrl: 'templates/tab-car-prot-details.html',
+                  controller: 'CarPrDetails'
+                }
+              }
+            })
+
             .state('tab.car-protect', {
               url: '/car-protect',
               views: {

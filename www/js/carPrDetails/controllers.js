@@ -2,18 +2,18 @@ angular.module('carPrDetails.controllers', [])
 .controller('CarProtectDetailsCtrl', [
     '$state', '$scope', '$stateParams', 'UserService', 'CarPrDetailsService', // <-- controller dependencies
     function($state, $scope, $stateParams, UserService, CarPrDetailsService) {
-      CarService.findAllCarPrCompanies().then(function(cars) {
+      CarPrDetailsService.findAllCarPrCompanies().then(function(cars) {
         console.log(cars.length);
-        $scope.carList = cars;
+        $scope.carPrDetails = cars;
       })
     }
-  ]);
+  ])
 
-/*.controller('CarDetailsCtrl', [
+.controller('CarPrDetails', [
     '$state', '$scope', '$stateParams', 'UserService', 'CarPrDetailsService',
-    function($state, $scope, $stateParams, UserService, CarService){
-      CarService.findMyCars($stateParams.itemId).then(function(car){
-        $scope.carDetails = car;
+    function($state, $scope, $stateParams, UserService, CarPrDetailsService){
+      CarPrDetailsService.findCarPrDetails($stateParams.itemId).then(function(carDtls){
+        $scope.carPrDetails = carDtls;
       })
     }
-]);*/
+]);

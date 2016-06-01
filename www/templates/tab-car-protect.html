@@ -11,9 +11,9 @@
     </ion-nav-buttons>
     <ion-content>
         <ion-list can-swipe="true">
-            <ion-item class="item" ng-repeat="data in carPrDetails" type="item-text-wrap">
+            <ion-item class="item" ng-repeat="data in carPrDetails" type="item-text-wrap" href="#/tab/car-protect-dtls/{{data.id}}">
                 <pre>Name: {{data.get('name')}}</pre>
-                <pre>Tab to view details</pre>
+                <pre>Details: {{data.get('details')}}</pre>
             </ion-item>
         </ion-list>
     </ion-content>
